@@ -28,6 +28,7 @@ import AppointmentModal from './components/AppointmentModal';
 import PrescriptionModal from './components/PrescriptionModal';
 import InvoiceModal from './components/InvoiceModal';
 import MedicalRecordsView from './views/MedicalRecordsView';
+import AdminDashboard from './views/AdminDashboard';
 import { useAuth } from './context/AuthContext';
 import LoginModal from './components/LoginModal';
 
@@ -267,6 +268,13 @@ export default function App() {
   };
   const { auth, login } = useAuth();
   const userRole = auth?.user?.role || 'secretary';
+
+  useEffect(() => {
+    if (userRole === 'admin' && activeTab !== 'admin' && activeTab === 'dashboard') {
+      setActiveTab('admin');
+    }
+  }, [userRole]);
+
   const handleLogin = async (role, credential) => {
     let email;
     if (role === 'doctor') email = 'doc';
@@ -276,7 +284,9 @@ export default function App() {
     const password = credential || (role === 'doctor' ? (clinicConfig.doctorPin || '1234') : (role === 'secretary' ? (clinicConfig.secretaryPin || '0000') : ''));
     const result = await login(email, password);
     if (!result.success) {
-      alert('Login failed');
+      alert('Login failed: ' + (result.message || 'Invalid credentials'));
+    } else if (role === 'admin') {
+      setActiveTab('admin');
     }
   };
   if (!auth?.user) {
@@ -409,6 +419,10 @@ export default function App() {
               onSaveConfig={handleSaveConfig}
               lang={lang}
             />
+          )}
+
+          {activeTab === 'admin' && (
+            <AdminDashboard />
           )}
         </main>
       </div>

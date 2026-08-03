@@ -16,14 +16,14 @@ export default function Sidebar({ activeTab, setActiveTab, lang, clinicConfig, u
   const t = translations[lang];
 
   const allMenuItems = [
-    { id: 'dashboard', label: t.navDashboard, icon: LayoutDashboard, roles: ['doctor', 'secretary'] },
-    { id: 'patients', label: t.navPatients, icon: Users, roles: ['doctor', 'secretary'] },
-    { id: 'calendar', label: t.navCalendar, icon: Calendar, roles: ['doctor', 'secretary'] },
-    { id: 'reminders', label: t.navReminders, icon: Bell, badge: 'WhatsApp', roles: ['doctor', 'secretary'] },
-    { id: 'prescriptions', label: t.navPrescriptions, icon: FileText, badge: 'CNAM', roles: ['doctor'] },
-    { id: 'medical-records', label: lang === 'ar' ? 'السجلات الطبية' : 'Dossiers Médicaux', icon: Heart, roles: ['doctor'] },
-    { id: 'billing', label: t.navBilling, icon: CreditCard, roles: ['doctor', 'secretary'] },
-    { id: 'settings', label: t.navSettings, icon: Settings, roles: ['doctor'] },
+    { id: 'dashboard', label: t.navDashboard, icon: LayoutDashboard, roles: ['doctor', 'secretary', 'admin'] },
+    { id: 'patients', label: t.navPatients, icon: Users, roles: ['doctor', 'secretary', 'admin'] },
+    { id: 'calendar', label: t.navCalendar, icon: Calendar, roles: ['doctor', 'secretary', 'admin'] },
+    { id: 'reminders', label: t.navReminders, icon: Bell, badge: 'WhatsApp', roles: ['doctor', 'secretary', 'admin'] },
+    { id: 'prescriptions', label: t.navPrescriptions, icon: FileText, badge: 'CNAM', roles: ['doctor', 'admin'] },
+    { id: 'medical-records', label: lang === 'ar' ? 'السجلات الطبية' : 'Dossiers Médicaux', icon: Heart, roles: ['doctor', 'admin'] },
+    { id: 'billing', label: t.navBilling, icon: CreditCard, roles: ['doctor', 'secretary', 'admin'] },
+    { id: 'settings', label: t.navSettings, icon: Settings, roles: ['admin'] },
     { id: 'admin', label: 'Admin', icon: Activity, roles: ['admin'] },
   ];
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Plus, Search, Calendar as CalendarIcon, ShieldCheck, UserCheck, Shield } from 'lucide-react';
+import { Globe, Plus, Search, Calendar as CalendarIcon, ShieldCheck, UserCheck, Shield, Activity } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { translations } from '../utils/translations';
 
@@ -52,10 +52,12 @@ export default function Header({
         {/* Current Role Badge (read-only, set by login) */}
         <div className="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-700">
           <div className={`px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 ${
-            userRole === 'doctor' ? 'bg-teal-600 text-white shadow' : 'bg-cyan-600 text-white shadow'
+            userRole === 'doctor' ? 'bg-teal-600 text-white shadow' : userRole === 'admin' ? 'bg-purple-600 text-white shadow' : 'bg-cyan-600 text-white shadow'
           }`}>
             {userRole === 'doctor' 
               ? <><Shield className="w-3 h-3" /><span>Médecin</span></>
+              : userRole === 'admin'
+              ? <><Activity className="w-3 h-3" /><span>Admin</span></>
               : <><UserCheck className="w-3 h-3" /><span>Secrétaire</span></>
             }
           </div>

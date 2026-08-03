@@ -44,6 +44,7 @@ export default function App() {
   // userRole is now driven by authenticated user
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Domain Datasets State
   const [clinicConfig, setClinicConfig] = useState(() => getStoredData(STORAGE_KEYS.CLINIC_CONFIG, {}));
@@ -313,6 +314,8 @@ export default function App() {
         lang={lang} 
         clinicConfig={clinicConfig}
         userRole={userRole}
+        isMobileMenuOpen={isMobileMenuOpen}
+        closeMobileMenu={() => setIsMobileMenuOpen(false)}
       />
 
       {/* Main Workspace Area */}
@@ -328,10 +331,12 @@ export default function App() {
           onOpenInvoiceModal={() => setIsInvoiceModalOpen(true)}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          isMobileMenuOpen={isMobileMenuOpen}
+          toggleMobileMenu={() => setIsMobileMenuOpen(prev => !prev)}
         />
 
         {/* Tab Views Container */}
-        <main className="p-6 flex-1 max-w-7xl w-full mx-auto">
+        <main className="p-4 sm:p-6 pb-20 md:pb-6 flex-1 max-w-7xl w-full mx-auto">
           {activeTab === 'dashboard' && (
             <DashboardView 
               patients={patients}

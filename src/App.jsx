@@ -301,7 +301,11 @@ export default function App() {
   }
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-100 overflow-hidden font-sans">
+    <div className="flex h-screen bg-slate-950 text-slate-100 overflow-hidden font-sans relative">
+      {/* Background Ambient Glow Effects */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+
       {/* Sidebar Navigation */}
       <Sidebar 
         activeTab={activeTab} 
@@ -418,6 +422,7 @@ export default function App() {
               clinicConfig={clinicConfig}
               onSaveConfig={handleSaveConfig}
               lang={lang}
+              userRole={userRole}
             />
           )}
 

@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
-import { Settings, Database, Download, Upload, ShieldCheck, UserCheck, Save, CheckCircle2 } from 'lucide-react';
+import { Settings, Database, Download, Upload, ShieldCheck, UserCheck, Save, CheckCircle2, Lock } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { exportFullDatabaseBackup, importDatabaseBackup } from '../utils/storage';
 
-export default function SettingsView({ clinicConfig, onSaveConfig, lang }) {
+export default function SettingsView({ clinicConfig, onSaveConfig, lang, userRole }) {
   const t = translations[lang];
 
   const [formData, setFormData] = useState(clinicConfig);
   const [successNotice, setSuccessNotice] = useState('');
+
+  if (userRole !== 'admin') {
+    return (
+      <div className="py-16 px-6 text-center max-w-lg mx-auto space-y-5 animate-in fade-in zoom-in duration-300">
+        <div className="w-20 h-20 rounded-3xl bg-rose-500/10 border border-rose-500/30 text-rose-400 mx-auto flex items-center justify-center shadow-xl shadow-rose-950/30">
+          <Lock className="w-10 h-10 stroke-[2]" />
+        </div>
+        <h2 className="text-2xl font-black text-white tracking-tight">Accès Restreint & Verrouillé</h2>
+        <p className="text-xs text-slate-400 leading-relaxed">
+          Les <strong>Paramètres du Cabinet</strong> et la <strong>Sauvegarde des Données</strong> sont strictement réservés et verrouillés pour les comptes Médecin et Secrétaire.
+        </p>
+        <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs text-purple-300 font-semibold shadow-lg">
+          Connectez-vous en tant qu'<strong>Administrateur</strong> (Mot de passe: <span className="font-mono">joulaine12!@</span>) pour configurer le cabinet ou exporter/restaurer la base de données.
+        </div>
+      </div>
+    );
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();

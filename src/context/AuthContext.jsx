@@ -63,6 +63,11 @@ export const AuthProvider = ({ children }) => {
     setStoredData(STORAGE_KEYS.AUTH, auth);
   }, [auth]);
 
+  // Reset lock info on app start (clears any prior lock for demo/live)
+  useEffect(() => {
+    setLockInfo({ count: 0, lockedUntil: null });
+  }, []);
+
   return (
     <AuthContext.Provider value={{ auth, login, logout }}>
       {children}

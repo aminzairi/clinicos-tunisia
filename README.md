@@ -15,8 +15,12 @@
 
 ---
 
-## ✨ Why Clinicos Tunisia?
-- **Role‑Based UI** – Doctor sees full patient/appointment suite; Secretary gets a focused workflow.
+## ✨ Why# ClinicOS Tunisia
+
+_Automated build on $(date)_
+
+---
+ **Role‑Based UI** – Doctor sees full patient/appointment suite; Secretary gets a focused workflow.
 - **Zero‑backend, instant setup** – All data stored locally in `localStorage` (perfect for demos, training, or small clinics).
 - **Security‑first** – Built‑in lock‑out after 3 failed logins, protecting against credential stuffing.
 - **Docker‑ready** – Multi‑stage Dockerfile and GitHub Actions CI push an image to GHCR for easy server deployment.

@@ -40,7 +40,7 @@ ClinicOS Tunisia features a strict **3-Tier Separated Login System** with role-b
 
 | Role | Tab / Profile | Default Credential | Access Rights & Privileges |
 | :--- | :--- | :--- | :--- |
-| 🛡️ **Admin** | **Admin** | Password: `joulaine12!@` | **Full Unrestricted Access** — System Metrics, User Accounts Table, Security Lock Reset, Clinic Config & JSON Database Export/Restore |
+| 🛡️ **Admin** | **Admin** | Password: `` | **Full Unrestricted Access** — System Metrics, User Accounts Table, Security Lock Reset, Clinic Config & JSON Database Export/Restore |
 | 🩺 **Doctor** | **Espace Médecin** | PIN: `1234` | Full Clinical Suite — Patients, Calendar, CNAM Prescriptions, Medical Records, Billing & Instant WhatsApp Reminders |
 | 📋 **Secretary** | **Secrétariat & Accueil** | PIN: `0000` | Reception Suite — Patient Intake, Calendar Scheduling, Billing & WhatsApp Reminders |
 

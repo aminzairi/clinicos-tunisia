@@ -25,7 +25,9 @@ const DEFAULT_CONFIG = {
   email: 'contact@dr-benali.tn',
   smsApiKey: 'WINSMS_API_SECRET_KEY_PROD',
   whatsAppMode: 'web_direct',
-  currency: 'TND'
+  currency: 'TND',
+  doctorPin: '1234',
+  secretaryPin: '0000'
 };
 
 // Helper data for seed generation

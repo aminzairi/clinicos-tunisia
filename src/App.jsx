@@ -269,7 +269,7 @@ export default function App() {
   const userRole = auth?.user?.role || 'secretary';
   const handleLogin = async (role) => {
     const email = role === 'doctor' ? 'doc' : 'sec';
-    const password = email;
+    const password = role === 'doctor' ? (clinicConfig.doctorPin || '1234') : (clinicConfig.secretaryPin || '0000');
     const result = await login(email, password);
     if (!result.success) {
       alert('Login failed');

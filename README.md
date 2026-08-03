@@ -1,56 +1,122 @@
-# Clinicos Tunisia (React + Vite)
+# Clinicos Tunisia – Smart Clinic Management
 
-This repository contains a modern React application built with Vite, featuring role‑based access control (Doctor / Secretary) and a Dockerized production build. The code is ready for deployment on both Docker‑based platforms and static‑site hosts.
+[![CI](https://github.com/aminzairi/clinicos-tunisia/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/aminzairi/clinicos-tunisia/actions/workflows/docker-publish.yml)  
+[![Docker Pulls](https://img.shields.io/docker/pulls/aminzairi/clinicos-tunisia?logo=docker)](https://hub.docker.com/r/aminzairi/clinicos-tunisia)
 
-## Features
-- Role‑based UI (Doctor sees all tabs, Secretary sees a restricted view)
-- Pre‑seeded credentials: `doc`/`doc` for Doctor, `sec`/`sec` for Secretary
-- Dockerfile for container deployment
-- GitHub Actions workflow that builds and pushes an image to GitHub Container Registry
-- Netlify configuration (`netlify.toml`) for static‑site deployment
-
-## Deployment
-
-### Docker (already configured)
-The repository includes a `Dockerfile` and a GitHub Actions workflow that build and push a Docker image to GitHub Container Registry. You can pull and run the image with:
-```
- docker pull ghcr.io/aminzairi/clinicos-tunisia:latest
- docker run -d -p 80:80 --name clinicos-tunisia ghcr.io/aminzairi/clinicos-tunisia:latest
-```
-
-### Netlify (static site)
-You can deploy this Vite app to Netlify as a static site.
-
-1. Sign in to Netlify and click **New site from Git**.
-2. Connect the GitHub repository `aminzairi/clinicos-tunisia`.
-3. In the **Build settings** set:
-   - **Build command**: `npm install && npm run build`
-   - **Publish directory**: `dist`
-4. Click **Deploy site**. Netlify will run the build and serve the site.
-
-The repository already contains a `netlify.toml` file that configures the build automatically:
-```toml
-[build]
-  command = "npm install && npm run build"
-  publish = "dist"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
-
-## Public URL
-The application is publicly accessible at:
-
-```
-https://elegant-cassata-4239c7.netlify.app/
-```
-
-Open the URL in any browser and log in with the credentials listed above.
+> **A sleek, role‑based medical clinic management web app built with React + Vite, ready for Docker or static‑site deployment.**
 
 ---
 
-### Login credentials (pre‑seeded)
-- **Doctor**: `doc` / `doc`
-- **Secretary**: `sec` / `sec`
+## 🎬 Live Demo
+
+🚀 **Try it now:** https://elegant-cassata-4239c7.netlify.app/
+
+![App Dashboard](file:///C:/Users/Zairi/.gemini/antigravity/brain/5ebbc7e4-f6fc-4a92-824c-913f04421fe2/app_screenshot_1785721759941.jpg)
+
+---
+
+## ✨ Why Clinicos Tunisia?
+- **Role‑Based UI** – Doctor sees full patient/appointment suite; Secretary gets a focused workflow.
+- **Zero‑backend, instant setup** – All data stored locally in `localStorage` (perfect for demos, training, or small clinics).
+- **Security‑first** – Built‑in lock‑out after 3 failed logins, protecting against credential stuffing.
+- **Docker‑ready** – Multi‑stage Dockerfile and GitHub Actions CI push an image to GHCR for easy server deployment.
+- **Netlify‑friendly** – Static build can be deployed in seconds to any Netlify account.
+- **Beautiful UI** – Dark‑mode, glass‑morphism, smooth micro‑animations, and Google‑Font typography for a premium look.
+
+---
+
+## 🛠️ Tech Stack
+| Layer | Tech |
+|-------|------|
+| Frontend | **React 18**, **Vite**, vanilla CSS (dark‑mode, glassmorphism) |
+| Build | Vite (dev server, production bundler) |
+| Containerisation | Docker (multi‑stage) |
+| CI/CD | GitHub Actions – builds Docker image & pushes to GHCR |
+| Static Hosting | Netlify (`netlify.toml`) |
+| Version Control | Git + GitHub |
+
+---
+
+## 📂 Repository Structure
+```text
+clinicos-tunisia/
+├─ src/               # React source files
+│  ├─ components/    # UI components (Header, Sidebar, …)
+│  ├─ pages/         # Application pages
+│  └─ App.jsx        # Root component & routing
+├─ public/            # Static assets & index.html
+├─ Dockerfile         # Multi‑stage Docker build
+├─ netlify.toml       # Netlify build configuration
+├─ .github/workflows/docker-publish.yml  # GitHub Actions CI
+├─ README.md          # *This file* – project pitch & docs
+└─ PROJECT_OVERVIEW.md # Detailed overview (auto‑generated)
+```
+
+---
+
+## 🚀 Get Started (Local Development)
+```bash
+# Clone the repo
+git clone https://github.com/aminzairi/clinicos-tunisia.git
+cd clinicos-tunisia
+
+# Install deps
+npm install
+
+# Run dev server (HMR)
+npm run dev   # http://localhost:5173
+
+# Build for production
+npm run build   # outputs to ./dist
+```
+
+---
+
+## 📦 Production Deployment
+### Docker (recommended for servers)
+```bash
+# Pull the pre‑built image from GHCR
+docker pull ghcr.io/aminzairi/clinicos-tunisia:latest
+
+# Run it
+docker run -d -p 80:80 --name clinicos-tunisia ghcr.io/aminzairi/clinicos-tunisia:latest
+```
+Visit `http://<host>`.
+
+### Netlify (static site)
+1. Sign in → **New site from Git** → connect `aminzairi/clinicos-tunisia`.
+2. Netlify auto‑detects `netlify.toml` and runs:
+   - **Build command:** `npm install && npm run build`
+   - **Publish directory:** `dist`
+3. Click **Deploy site** – your app will be live at a Netlify sub‑domain.
+
+---
+
+## 🔐 Credentials (pre‑seeded)
+| Role | Username | Password |
+|------|----------|----------|
+| **Doctor** | `doc` | `1234` |
+| **Secretary** | `sec` | `0000` |
+
+*The login logic includes a lock‑out after 3 failed attempts (5‑minute cooldown).*
+
+---
+
+## 🤝 Contributing
+Feel free to fork, open issues, or submit PRs. Follow the standard GitHub flow:
+```bash
+git checkout -b feature/awesome-feature
+# make changes
+git commit -m "feat: describe your change"
+git push origin feature/awesome-feature
+# open a PR
+```
+
+---
+
+## 📄 License
+MIT – see `LICENSE` file.
+
+---
+
+*For a deeper dive, see the auto‑generated [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md).*

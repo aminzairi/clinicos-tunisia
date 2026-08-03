@@ -219,8 +219,6 @@ export function initializeDatabase(forceReset = false) {
   // Seed default users if missing
   if (forceReset || !localStorage.getItem(STORAGE_KEYS.USERS)) {
     const defaultUsers = [
-      { email: 'doctor@example.com', passwordHash: bcrypt.hashSync('doctor123', 10), role: 'doctor' },
-      { email: 'secretary@example.com', passwordHash: bcrypt.hashSync('secretary123', 10), role: 'secretary' },
       { email: 'doc', passwordHash: bcrypt.hashSync('doc', 10), role: 'doctor' },
       { email: 'sec', passwordHash: bcrypt.hashSync('sec', 10), role: 'secretary' }
     ];

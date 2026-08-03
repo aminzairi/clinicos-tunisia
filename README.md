@@ -1,24 +1,22 @@
-# React + Vite
+# Clinicos Tunisia (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This repository contains a modern React application built with Vite, featuring role‑based access control (Doctor / Secretary) and a Dockerized production build. The code is ready for deployment on both Docker‑based platforms and static‑site hosts.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Features
+- Role‑based UI (Doctor sees all tabs, Secretary sees a restricted view)
+- Pre‑seeded credentials: `doc`/`doc` for Doctor, `sec`/`sec` for Secretary
+- Dockerfile for container deployment
+- GitHub Actions workflow that builds and pushes an image to GitHub Container Registry
+- Netlify configuration (`netlify.toml`) for static‑site deployment
 
 ## Deployment
 
 ### Docker (already configured)
-The repository includes a `Dockerfile` and a GitHub Actions workflow that build and push a Docker image to GitHub Container Registry.
+The repository includes a `Dockerfile` and a GitHub Actions workflow that build and push a Docker image to GitHub Container Registry. You can pull and run the image with:
+```
+ docker pull ghcr.io/aminzairi/clinicos-tunisia:latest
+ docker run -d -p 80:80 --name clinicos-tunisia ghcr.io/aminzairi/clinicos-tunisia:latest
+```
 
 ### Netlify (static site)
 You can deploy this Vite app to Netlify as a static site.
@@ -30,8 +28,7 @@ You can deploy this Vite app to Netlify as a static site.
    - **Publish directory**: `dist`
 4. Click **Deploy site**. Netlify will run the build and serve the site.
 
-Alternatively, add a `netlify.toml` file (already present) to configure the build automatically:
-
+The repository already contains a `netlify.toml` file that configures the build automatically:
 ```toml
 [build]
   command = "npm install && npm run build"
@@ -43,11 +40,17 @@ Alternatively, add a `netlify.toml` file (already present) to configure the buil
   status = 200
 ```
 
-Commit any changes and push; Netlify will pick up the configuration on the next deploy.
+## Public URL
+The application is publicly accessible at:
+
+```
+https://elegant-cassata-4239c7.netlify.app/
+```
+
+Open the URL in any browser and log in with the credentials listed above.
 
 ---
 
-Login credentials (pre‑seeded):
-
-- Doctor: `doc` / `doc`
-- Secretary: `sec` / `sec`
+### Login credentials (pre‑seeded)
+- **Doctor**: `doc` / `doc`
+- **Secretary**: `sec` / `sec`

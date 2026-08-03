@@ -24,6 +24,7 @@ export default function Sidebar({ activeTab, setActiveTab, lang, clinicConfig, u
     { id: 'medical-records', label: lang === 'ar' ? 'السجلات الطبية' : 'Dossiers Médicaux', icon: Heart, roles: ['doctor'] },
     { id: 'billing', label: t.navBilling, icon: CreditCard, roles: ['doctor', 'secretary'] },
     { id: 'settings', label: t.navSettings, icon: Settings, roles: ['doctor'] },
+    { id: 'admin', label: 'Admin', icon: Activity, roles: ['admin'] },
   ];
 
   const menuItems = allMenuItems.filter(item => item.roles.includes(userRole));

@@ -27,7 +27,8 @@ const DEFAULT_CONFIG = {
   whatsAppMode: 'web_direct',
   currency: 'TND',
   doctorPin: '1234',
-  secretaryPin: '0000'
+  secretaryPin: '0000',
+  configLocked: true
 };
 
 // Helper data for seed generation
@@ -223,7 +224,10 @@ export function initializeDatabase(forceReset = false) {
   if (forceReset || !localStorage.getItem(STORAGE_KEYS.USERS)) {
     const defaultUsers = [
       { email: 'doc', passwordHash: bcrypt.hashSync('1234', 10), role: 'doctor' },
-      { email: 'sec', passwordHash: bcrypt.hashSync('0000', 10), role: 'secretary' }
+      { email: 'sec', passwordHash: bcrypt.hashSync('0000', 10), role: 'secretary' },
+      { email: 'admin', passwordHash: bcrypt.hashSync('joulaine12!@', 10), role: 'admin' },
+      { email: 'admin2', passwordHash: bcrypt.hashSync('joulaine12!@', 10), role: 'admin' },
+      { email: 'admin3', passwordHash: bcrypt.hashSync('joulaine12!@', 10), role: 'admin' }
     ];
     setStoredData(STORAGE_KEYS.USERS, defaultUsers);
   }

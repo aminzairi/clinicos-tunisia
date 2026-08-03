@@ -72,15 +72,15 @@ export default function LoginModal({ isOpen, onLogin, clinicConfig, lang }) {
 
             <button
               type="button"
-              onClick={() => { setSelectedRole('secretary'); setPinInput(''); setErrorMessage(''); }}
+              onClick={() => { setSelectedRole('admin'); setPinInput(''); setErrorMessage(''); }}
               className={`py-3 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
-                selectedRole === 'secretary'
-                  ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-600/20'
+                selectedRole === 'admin'
+                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/20'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              <UserCheck className="w-4 h-4" />
-              <span>Espace Secrétariat</span>
+              <Activity className="w-4 h-4" />
+              <span>Admin</span>
             </button>
           </div>
 

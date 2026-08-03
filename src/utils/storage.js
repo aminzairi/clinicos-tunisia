@@ -10,6 +10,7 @@ const STORAGE_KEYS = {
   INVOICES: 'clinicos_invoices',
   LANGUAGE: 'clinicos_language',
   AUTH: 'clinicos_auth',
+  USERS: 'clinicos_users',
   LOCK: 'clinicos_lock',
 };
 

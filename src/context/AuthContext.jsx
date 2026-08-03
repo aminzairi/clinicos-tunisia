@@ -1,6 +1,6 @@
 // src/context/AuthContext.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { validateUser, getStoredData, setStoredData, STORAGE_KEYS, getLockInfo, setLockInfo } from '../utils/storage';
+import { validateUser, getStoredData, setStoredData, STORAGE_KEYS, getLockInfo, setLockInfo, initializeDatabase } from '../utils/storage';
 
 const AuthContext = createContext(null);
 
@@ -63,10 +63,15 @@ export const AuthProvider = ({ children }) => {
     setStoredData(STORAGE_KEYS.AUTH, auth);
   }, [auth]);
 
-  // Reset lock info on app start (clears any prior lock for demo/live)
-  useEffect(() => {
-    setLockInfo({ count: 0, lockedUntil: null });
-  }, []);
+// Reset lock info on app start (clears any prior lock for demo/live)
+useEffect(() => {
+  setLockInfo({ count: 0, lockedUntil: null });
+}, []);
+
+// Initialize database (seed default users, config, etc.) on first render
+useEffect(() => {
+  initializeDatabase();
+}, []);
 
   return (
     <AuthContext.Provider value={{ auth, login, logout }}>

@@ -15,7 +15,7 @@ const STORAGE_KEYS = {
 };
 
 const DEFAULT_CONFIG = {
-  doctorName: 'Dr. Youssef Ben Ali',
+  doctorName: 'NOBODY',
   specialty: 'Cardiologie & Médecine Générale',
   codeCNAM: '14-8859-01',
   matriculeFiscal: '1458923/A/M/000',

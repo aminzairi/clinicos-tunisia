@@ -1,9 +1,9 @@
 # Clinicos Tunisia – Smart Clinic Management
 
 [![CI](https://github.com/aminzairi/clinicos-tunisia/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/aminzairi/clinicos-tunisia/actions/workflows/docker-publish.yml)  
-[![Docker Pulls](https://img.shields.io/docker/pulls/aminzairi/clinicos-tunisia?logo=docker)](https://hub.docker.com/r/aminzairi/clinicos-tunisia)
+[![Docker Pulls](https://camo.githubusercontent.com/a3c715c22be6230413555c7546ae8c5c2ecfc3636805f3d9b368eace0b4d3dc7/68747470733a2f2f696d672e736869656c64732e696f2f646f636b65722f70756c6c732f616d696e7a616972692f636c696e69636f732d74756e697369613f6c6f676f3d646f636b6572)](https://hub.docker.com/r/aminzairi/clinicos-tunisia)
 
-> **A sleek, role‑based medical clinic management web app built with React + Vite, ready for Docker or static‑site deployment.**
+**A sleek, role‑based medical clinic management web app built with React + Vite, ready for Docker or static‑site deployment.**
 
 ---
 

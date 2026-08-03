@@ -212,7 +212,7 @@ export default function LoginModal({ isOpen, onLogin, clinicConfig, lang }) {
           </form>
 
           <p className="text-[10px] text-center text-slate-500 pt-2 border-t border-slate-800/80">
-            PIN Médecin: <span className="text-teal-400 font-bold">1234</span> | PIN Secrétaire: <span className="text-cyan-400 font-bold">0000</span> | Admin: <span className="text-purple-400 font-bold">joulaine12!@</span>
+            PIN Médecin par défaut: <span className="text-teal-400 font-bold">1234</span> | PIN Secrétaire: <span className="text-cyan-400 font-bold">0000</span>
           </p>
         </div>
       </div>

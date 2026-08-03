@@ -20,7 +20,7 @@ export default function SettingsView({ clinicConfig, onSaveConfig, lang, userRol
           Les <strong>Paramètres du Cabinet</strong> et la <strong>Sauvegarde des Données</strong> sont strictement réservés et verrouillés pour les comptes Médecin et Secrétaire.
         </p>
         <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs text-purple-300 font-semibold shadow-lg">
-          Connectez-vous en tant qu'<strong>Administrateur</strong> (Mot de passe: <span className="font-mono">joulaine12!@</span>) pour configurer le cabinet ou exporter/restaurer la base de données.
+          Veuillez vous connecter en tant qu'<strong>Administrateur</strong> pour configurer le cabinet ou exporter/restaurer la base de données.
         </div>
       </div>
     );

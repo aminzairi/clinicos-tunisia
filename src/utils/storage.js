@@ -10,7 +10,7 @@ const STORAGE_KEYS = {
   INVOICES: 'clinicos_invoices',
   LANGUAGE: 'clinicos_language',
   AUTH: 'clinicos_auth',
-  USERS: 'clinicos_users'
+  LOCK: 'clinicos_lock',
 };
 
 const DEFAULT_CONFIG = {
@@ -219,8 +219,8 @@ export function initializeDatabase(forceReset = false) {
   // Seed default users if missing
   if (forceReset || !localStorage.getItem(STORAGE_KEYS.USERS)) {
     const defaultUsers = [
-      { email: 'doc', passwordHash: bcrypt.hashSync('doc', 10), role: 'doctor' },
-      { email: 'sec', passwordHash: bcrypt.hashSync('sec', 10), role: 'secretary' }
+      { email: 'doc', passwordHash: bcrypt.hashSync('1234', 10), role: 'doctor' },
+      { email: 'sec', passwordHash: bcrypt.hashSync('0000', 10), role: 'secretary' }
     ];
     setStoredData(STORAGE_KEYS.USERS, defaultUsers);
   }
@@ -266,3 +266,22 @@ export function importDatabaseBackup(jsonData) {
 }
 
 export { STORAGE_KEYS };
+
+// ---- Security helper functions ----
+/**
+ * Get lock information (failed attempts count and lock expiry).
+ * Returns an object { count: number, lockedUntil: number | null }.
+ */
+export function getLockInfo() {
+  const defaultInfo = { count: 0, lockedUntil: null };
+  return getStoredData(STORAGE_KEYS.LOCK, defaultInfo);
+}
+
+/**
+ * Update lock information in storage.
+ * @param {Object} info - { count: number, lockedUntil: number | null }
+ */
+export function setLockInfo(info) {
+  setStoredData(STORAGE_KEYS.LOCK, info);
+}
+

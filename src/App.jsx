@@ -267,9 +267,13 @@ export default function App() {
   };
   const { auth, login } = useAuth();
   const userRole = auth?.user?.role || 'secretary';
-  const handleLogin = async (role) => {
-    const email = role === 'doctor' ? 'doc' : 'sec';
-    const password = role === 'doctor' ? (clinicConfig.doctorPin || '1234') : (clinicConfig.secretaryPin || '0000');
+  const handleLogin = async (role, credential) => {
+    let email;
+    if (role === 'doctor') email = 'doc';
+    else if (role === 'secretary') email = 'sec';
+    else if (role === 'admin') email = 'admin';
+    else email = 'sec';
+    const password = credential || (role === 'doctor' ? (clinicConfig.doctorPin || '1234') : (role === 'secretary' ? (clinicConfig.secretaryPin || '0000') : ''));
     const result = await login(email, password);
     if (!result.success) {
       alert('Login failed');

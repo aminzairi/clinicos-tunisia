@@ -24,8 +24,18 @@ export default function LoginModal({ isOpen, onLogin, clinicConfig, lang }) {
     } else if (selectedRole === 'secretary' && pinInput === secretaryPin) {
       onLogin('secretary');
       setPinInput('');
+    } else if (selectedRole === 'admin') {
+      // For admin, use the entered password directly
+      onLogin('admin', pinInput);
+      setPinInput('');
     } else {
-      setErrorMessage(selectedRole === 'doctor' ? 'Code PIN Médecin incorrect (Par défaut: 1234)' : 'Code PIN Secrétaire incorrect (Par défaut: 0000)');
+      setErrorMessage(
+        selectedRole === 'doctor'
+          ? 'Code PIN Médecin incorrect (Par défaut: 1234)'
+          : selectedRole === 'secretary'
+          ? 'Code PIN Secrétaire incorrect (Par défaut: 0000)'
+          : 'Mot de passe Admin incorrect'
+      );
     }
   };
 
@@ -101,10 +111,10 @@ export default function LoginModal({ isOpen, onLogin, clinicConfig, lang }) {
               <input
                 type="password"
                 required
-                maxLength="6"
+                maxLength={selectedRole !== 'admin' ? "6" : undefined}
                 value={pinInput}
                 onChange={(e) => setPinInput(e.target.value)}
-                placeholder={selectedRole === 'doctor' ? 'Code PIN Médecin (ex: 1234)' : 'Code PIN Secrétaire (ex: 0000)'}
+                placeholder={selectedRole === 'doctor' ? 'Code PIN Médecin (ex: 1234)' : selectedRole === 'secretary' ? 'Code PIN Secrétaire (ex: 0000)' : 'Mot de passe Admin'}
                 className="w-full pl-10 pr-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-center text-sm font-mono tracking-widest text-white focus:outline-none focus:border-teal-500"
               />
             </div>
